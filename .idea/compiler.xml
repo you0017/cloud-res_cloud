@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="res-security" />
+        <module name="res-food" />
+        <module name="res-gateway" />
+        <module name="res-order" />
+        <module name="res-cart" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="res-cust" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="res-cart" options="-parameters" />
+      <module name="res-cust" options="-parameters" />
+      <module name="res-entity" options="" />
+      <module name="res-food" options="-parameters" />
+      <module name="res-gateway" options="-parameters" />
+      <module name="res-order" options="-parameters" />
+      <module name="res-security" options="-parameters" />
+      <module name="res_cloud" options="" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: res-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      routes:
+        - id: res-food  #路由id
+          uri: lb://res-food #路由微服务目标，lb代表负载均衡
+          predicates:  #路由断言，判断是否符合规则，符合则路由到目标
+            - Path=/resFood/**  #以请求路径做判断，以/resfood开头则符合
+        - id: res-security
+          uri: lb://res-security
+          predicates:
+            - Path=/resSecurity/**
+            #- After=
+            #其他断言看文档
+#          也可以单独加到每个下面
+#          filters:
+#            - args:
+#                - AddRequestHeader=
+      #default-filters: #左边的请求头里面的键，右边是值
+        #- AddResponseHeader=true,aaaaaa
+
+#jmx
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    jmx:
+      exposure:
+        include: "*"  # 默认情况下，一些敏感端点是禁用的，可以通过此配置启用
+
+logging:
+  file:
+    path: logs/${spring.application.name}
+  level:
+    root: info
+
+
