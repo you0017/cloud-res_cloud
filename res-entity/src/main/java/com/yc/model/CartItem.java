@@ -1,4 +1,6 @@
-package com.yc.bean;
+package com.yc.model;
+
+import com.yc.bean.Resfood;
 
 import java.io.Serializable;
 

@@ -18,6 +18,10 @@ spring:
           uri: lb://res-security
           predicates:
             - Path=/resSecurity/**
+        - id: res-cart
+          uri: lb://res-cart
+          predicates:
+            - Path=/resCart/**
             #- After=
             #其他断言看文档
 #          也可以单独加到每个下面

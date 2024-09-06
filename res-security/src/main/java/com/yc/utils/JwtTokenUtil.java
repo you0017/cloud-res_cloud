@@ -29,7 +29,7 @@ public class JwtTokenUtil {
                 .setClaims(payloadMap)
                 .signWith(SignatureAlgorithm.HS256,key)
                 //过期时间一天
-                .setExpiration(new Date(System.currentTimeMillis()+1*60*60*1000))
+                .setExpiration(new Date(System.currentTimeMillis()+1*60*60*24*1000))
                 .compact();
         return jwtToken;
     }
@@ -72,7 +72,7 @@ public class JwtTokenUtil {
                 .setHeaderParams(headerMap)
                 .setClaims(payloadMap)
                 .signWith(SignatureAlgorithm.HS256,key)
-                .setExpiration(new Date(System.currentTimeMillis()+5000))
+                .setExpiration(new Date(System.currentTimeMillis()+1*60*60*24*1000))
                 .compact();
 
         return jwtToken;

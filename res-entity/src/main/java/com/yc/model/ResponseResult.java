@@ -1,4 +1,4 @@
-package com.yc.bean;
+package com.yc.model;
 
 import lombok.Builder;
 import lombok.Data;

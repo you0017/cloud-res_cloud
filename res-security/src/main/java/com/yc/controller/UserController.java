@@ -2,7 +2,7 @@ package com.yc.controller;
 
 import com.yc.pojo.ResUser;
 import com.yc.pojo.ResUserVO;
-import com.yc.bean.ResponseResult;
+import com.yc.model.ResponseResult;
 import com.yc.service.ResUserService;
 import com.yc.utils.JwtTokenUtil;
 import jakarta.servlet.http.HttpSession;

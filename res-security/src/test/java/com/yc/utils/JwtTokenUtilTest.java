@@ -22,7 +22,7 @@ public class JwtTokenUtilTest {
     @Test
     public void decodeJWT(){
         String r = "itcastitcastitcastitcastitcastitcastitcastitcastitcast";
-        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiLmtYvor5Vqd3TnlJ_miJB0b2tlbiIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiJ5YyIsImV4cCI6MTcyNTM2NjAwOSwiaWF0IjoiYWE4MmI3ZDItZjE0Mi00MTUxLTg2ZmUtZTAxYTgyNjJiMTY4In0.diloztAIANieUIFvTJVvYjTWbTWULaBB5qvtO4rlR4E";
+        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiLmtYvor5Vqd3TnlJ_miJB0b2tlbiIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiJ5YyIsImV4cCI6MTcyNTY3NTAzNiwiaWF0IjoiZTZmMzEyMzgtY2U0Zi00M2UxLTk3N2QtMzY0MjI2ZWU4MWY4In0.p3fNljmeAj1T2hZcgonSazRU6MYOhDv1-6ViR72J2Hg";
         JwtTokenUtil.decodeJWT(token,r);
     }
 }

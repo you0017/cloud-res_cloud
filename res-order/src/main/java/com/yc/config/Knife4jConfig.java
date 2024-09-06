@@ -22,7 +22,7 @@ public class Knife4jConfig {
     @Bean
     public GroupedOpenApi adminApi() { // 创建了一个api接口的分组
         return GroupedOpenApi.builder()
-                .group("security") // 分组名称
+                .group("res-cart") // 分组名称
                 .pathsToMatch("/**") // 接口请求路径规则
                 .build();
     }
@@ -31,8 +31,8 @@ public class Knife4jConfig {
     public OpenAPI openAPI(){
         return new OpenAPI()
                 .info(new Info() // 基本信息配置
-                        .title("Res-Security") // 标题
-                        .description("Res-Security后端接口服务...") // 描述Api接口文档的基本信息
+                        .title("res-cart") // 标题
+                        .description("res-cart后端接口服务...") // 描述Api接口文档的基本信息
                         .version("v1.0.0") // 版本
                         // 设置OpenAPI文档的联系信息，包括联系人姓名为"patrick"，邮箱为"patrick@gmail.com"。
                         .contact(new Contact().name("patrick").email("patrick@gmail.com"))

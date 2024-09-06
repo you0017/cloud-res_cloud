@@ -4,7 +4,6 @@ package com.yc.config;
 import com.yc.interceptor.JwtTokenInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -60,7 +59,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     }
 
     @Bean
-    @LoadBalanced  // 这个注解使 RestTemplate 支持负载均衡
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }
