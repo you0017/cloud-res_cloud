@@ -55,11 +55,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(jwtTokenInterceptor).addPathPatterns("/resCart/**");
+        registry.addInterceptor(jwtTokenInterceptor).addPathPatterns("/resOrder/**");
     }
 
-    @Bean
-    public RestTemplate restTemplate(){
-        return new RestTemplate();
-    }
+
 }

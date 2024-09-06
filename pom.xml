@@ -24,6 +24,7 @@
         <module>res-gateway</module>
         <module>res-cart</module>
         <module>res-order</module>
+        <module>res-api</module>
     </modules>
 
     <properties>

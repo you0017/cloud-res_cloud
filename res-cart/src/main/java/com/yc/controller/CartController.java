@@ -1,7 +1,7 @@
 package com.yc.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yc.api.ResFood;
+import com.yc.api.resCartApi.ResFood;
 import com.yc.bean.Resfood;
 import com.yc.context.BaseContext;
 import com.yc.model.CartItem;

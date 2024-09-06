@@ -22,6 +22,10 @@ spring:
           uri: lb://res-cart
           predicates:
             - Path=/resCart/**
+        - id: res-order
+          uri: lb://res-order
+          predicates:
+            - Path=/resOrder/**
             #- After=
             #其他断言看文档
 #          也可以单独加到每个下面
