@@ -31,7 +31,7 @@ import java.util.Map;
 @RequestMapping("/resFood")
 @Slf4j
 @Tag(name = "菜品API",description = "菜品管理相关接口")
-
+@RefreshScope
 public class FoodController {
 
     @Autowired
@@ -39,10 +39,7 @@ public class FoodController {
 
     @Value("${res.food}")
     private String date;
-    @RefreshScope
-    public String setDate(String date){
-        return date;
-    }
+
     //路径参数
     @GetMapping("/findById/{fid}")
     public Map<String, Object> findById(@PathVariable Integer fid){
