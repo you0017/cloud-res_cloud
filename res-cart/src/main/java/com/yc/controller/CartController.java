@@ -1,11 +1,12 @@
 package com.yc.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yc.api.resCartApi.ResFood;
+import com.yc.api.ResFoodApi;
 import com.yc.bean.Resfood;
 import com.yc.context.BaseContext;
 import com.yc.model.CartItem;
 import com.yc.model.ResponseResult;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class CartController {
     @Autowired
     private RestTemplate restTemplate;  //和@OpenFeignClient注解功能一样
     @Autowired
-    private ResFood resFood;
+    private ResFoodApi resFoodApi;
 
     /***
      * 一次性添加多个购物项到购物车功能:使用场景:用户先将商品添加到购物车，再去登录去结算的场景，此时有token，浏览器中有购物车数据，一次性将数据传到服务器
@@ -35,8 +36,21 @@ public class CartController {
      */
 
     @PutMapping("/addAllCartItems")
-    public ResponseResult addAllCartItems(@RequestBody List<CartItem> cartItems){
+    public ResponseResult addAllCartItems(@RequestBody List<CartItem> cartItems, HttpServletRequest request){
         String userid = BaseContext.getCurrentId();
+
+
+        //List<Resfood> obj = (List<Resfood>) resFoodApi.findAll(request.getHeader("token")).getObj();
+        //System.out.println("foods:"+obj);
+        /*Object o = resFoodApi.findByPage(new PageBean<>(1, 100, "fid", "asc", 0L, null, 0, 0, 0, null)).get("obj");
+        System.out.println("pageBean:"+o);
+        Resfood rs = new Resfood();
+        rs.setFname("菜");
+        rs.setDetail("营养");
+        Object o1 = resFoodApi.findByPageWithCondition(new PageBean<>(1, 100, "fid", "asc", 0L, null, 0, 0, 0, null)).get("obj");
+        System.out.println("pageBeanWithCondition:"+o1);*/
+
+
 
         Map<String,Object> map = new HashMap<>();
         if (redisTemplate.hasKey("cart:"+userid)){
@@ -72,7 +86,7 @@ public class CartController {
 /*        String url = "http://res-food/resFood/findById/"+fid;
         Map<String,Object> result = this.restTemplate.getForObject(url,Map.class);*/
 
-        Map<String, Object> result = resFood.findById(fid);
+        Map<String, Object> result = resFoodApi.findById(fid);
         ObjectMapper objectMapper = new ObjectMapper();
         Resfood food = objectMapper.convertValue(result.get("obj"), Resfood.class);
         return food;

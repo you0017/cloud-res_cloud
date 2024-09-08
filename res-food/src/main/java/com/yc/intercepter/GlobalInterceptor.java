@@ -24,6 +24,7 @@ public class GlobalInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         log.info("postHandle");
+        System.out.println(request.getPathInfo());
 
         if (handler instanceof HandlerMethod){
             HandlerMethod handlerMethod = (HandlerMethod) handler;

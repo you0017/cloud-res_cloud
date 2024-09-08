@@ -29,6 +29,7 @@ public class MyLoadBalancerClientConfiguration  {
                                                              LoadBalancerClientFactory loadBalancerClientFactory) {
         log.info("轮询");
         String name = environment.getProperty(LoadBalancerClientFactory.PROPERTY_NAME);
+        //根据服务实例名  name  通过ServiceInstanceListSupplier获取列表
         return new RoundRobinLoadBalancer(loadBalancerClientFactory.getLazyProvider(name, ServiceInstanceListSupplier.class), name);
     }*/
 

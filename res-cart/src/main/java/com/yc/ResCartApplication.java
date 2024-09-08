@@ -1,6 +1,7 @@
 package com.yc;
 
-import com.yc.config.FeignConfig;
+
+import com.yc.config.DefaultFeignConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = "com.yc.api",defaultConfiguration = FeignConfig.class)//开启openfeign
+@EnableFeignClients(basePackages = "com.yc.api",defaultConfiguration = DefaultFeignConfig.class)//开启openfeign
 
 @Slf4j
 public class ResCartApplication
