@@ -13,7 +13,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @MapperScan(basePackages = "com.yc.mapper")
 @EnableCaching
 @EnableDiscoveryClient
-
 @EnableAsync//开启异步
 
 @Slf4j

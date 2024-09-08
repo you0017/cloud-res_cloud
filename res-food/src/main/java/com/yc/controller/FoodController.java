@@ -17,8 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.apiguardian.api.API;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,13 +31,24 @@ import java.util.Map;
 @RequestMapping("/resFood")
 @Slf4j
 @Tag(name = "菜品API",description = "菜品管理相关接口")
+
 public class FoodController {
 
     @Autowired
     private FoodService foodService;
+
+    @Value("${res.food}")
+    private String date;
+    @RefreshScope
+    public String setDate(String date){
+        return date;
+    }
     //路径参数
     @GetMapping("/findById/{fid}")
     public Map<String, Object> findById(@PathVariable Integer fid){
+        DateFormat df = new SimpleDateFormat(date);
+        log.info("当前时间：{}",df.format(System.currentTimeMillis()));
+
         Map<String ,Object> map = new HashMap<>();
         Resfood resfood = null;
 

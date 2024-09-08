@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: res-cart
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        namespace: public
+        group: DEFAULT_GROUP
+        username: nacos
+        password: nacos
+        #prefix: res-mysql
+        #DataId的要求: ${prefix}-${spring.profiles.active}.${file-extension}
+        #${spring.profiles.active} 以命令行参数传进来 -Dspring.profile.active=xxx
+        #file-extension: yaml
+        shared-configs: #共享配置
+          - dataId: res-mysql.yaml #数据库
+          - dataId: sentinel.yaml
+        server-addr: 127.0.0.1:8848

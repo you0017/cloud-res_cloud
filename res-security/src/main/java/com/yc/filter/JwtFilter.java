@@ -27,7 +27,7 @@ public class JwtFilter extends OncePerRequestFilter {
     private JwtTokenUtil jwtUtil;
 
     @Autowired
-    ResUserService resUserService;
+    private ResUserService resUserService;
 
 
     @Override

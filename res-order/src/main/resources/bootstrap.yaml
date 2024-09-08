@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: res-order
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        namespace: public
+        group: DEFAULT_GROUP
+        username: nacos
+        password: nacos
+        shared-configs: #共享配置
+          - dataId: res-mysql.yaml #数据库
+          - dataId: sentinel.yaml
+        server-addr: 127.0.0.1:8848
+      discovery:
+        server-addr: 127.0.0.1:8848

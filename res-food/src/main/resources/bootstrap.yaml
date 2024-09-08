@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: res-food
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        namespace: public
+        group: DEFAULT_GROUP
+        username: nacos
+        password: nacos
+        prefix: res-food
+        file-extension: yaml
+        shared-configs: #共享配置
+          - dataId: res-mysql.yaml #数据库
+          - dataId: sentinel.yaml
+        server-addr: 127.0.0.1:8848
+        refresh-enabled: true #启用动态刷新
+      discovery:
+        server-addr: 127.0.0.1:8848
