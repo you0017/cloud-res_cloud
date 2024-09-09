@@ -8,9 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="res-security" />
-        <module name="res-food" />
-        <module name="res-gateway" />
         <module name="res-order" />
+        <module name="res-gateway" />
+        <module name="res-food" />
         <module name="res-cart" />
         <module name="res-api" />
       </profile>

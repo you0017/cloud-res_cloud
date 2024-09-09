@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/res-entity.iml" filepath="$PROJECT_DIR$/res-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/res-food/res-food.iml" filepath="$PROJECT_DIR$/res-food/res-food.iml" />
+      <module fileurl="file://$PROJECT_DIR$/res-gateway/res-gateway.iml" filepath="$PROJECT_DIR$/res-gateway/res-gateway.iml" />
     </modules>
   </component>
 </project>
