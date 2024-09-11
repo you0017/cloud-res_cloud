@@ -1,5 +1,6 @@
 package com.yc.controller;
 
+import com.yc.bean.Resuser;
 import com.yc.pojo.ResUser;
 import com.yc.pojo.ResUserVO;
 import com.yc.model.ResponseResult;
@@ -77,16 +78,20 @@ public class UserController {
     }
 
     @PostMapping("/logout")
-    public ResponseResult logout(@RequestHeader("Authorization") String authorization,@RequestHeader("token") String token){
+    public ResponseResult logout(@RequestHeader("token") String token){
         //这里可以实现JWT黑名单机制，或者让客户删除存储的JWT
         //例如，将token添加到Redis中
         return ResponseResult.ok("退出成功");
     }
 
-    @PostMapping("/check")
-    public ResponseResult doCheck(){
-        log.info("校验成功");
-        return ResponseResult.ok("校验成功");
-    }
 
+    @PostMapping("/checkLogin")
+    public ResponseResult checkLogin(){
+        log.info("权限校验成功");
+        //用security框架对当前用户进行鉴权
+        ResUser resUser = (ResUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        log.info("当前用户信息：{}",resUser);
+        resUser.setPassword("");
+        return ResponseResult.ok("已登录");
+    }
 }
