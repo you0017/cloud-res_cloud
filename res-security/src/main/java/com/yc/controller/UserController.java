@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -52,7 +54,7 @@ public class UserController {
     @PostMapping("/login")
     public ResponseResult login(@RequestBody @Valid ResUserVO resUserVO, HttpSession session){
         String captcha = (String) session.getAttribute("captcha");
-        if(!captcha.equalsIgnoreCase(resUserVO.getCaptcha())){
+        if(captcha == null || !captcha.equalsIgnoreCase(resUserVO.getCaptcha())){
             return ResponseResult.error("验证码错误");
         }
 
@@ -86,4 +88,5 @@ public class UserController {
         log.info("校验成功");
         return ResponseResult.ok("校验成功");
     }
+
 }

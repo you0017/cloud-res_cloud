@@ -15,7 +15,8 @@ public interface ResFoodApi {
     public Map<String, Object> findById(@PathVariable Integer fid);
 
     @GetMapping("/resFood/findAll")
-    public JsonModel findAll(@RequestHeader String token);
+    public JsonModel findAll();
+    //public JsonModel findAll(@RequestHeader String token);
 
     @PostMapping("/resFood/findByPage")
     public Map<String,Object> findByPage(@RequestBody PageBean<Resfood> pageBean);

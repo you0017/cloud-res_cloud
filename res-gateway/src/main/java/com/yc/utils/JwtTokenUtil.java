@@ -48,6 +48,20 @@ public class JwtTokenUtil {
         return null;
     }
 
+    public boolean isExpired(String token){
+        try {
+            Claims claims = Jwts.parser()
+                    .setSigningKey(key)
+                    .parseClaimsJws(token)
+                    .getBody();
+            return false;
+        }catch (Exception e){
+            //e.printStackTrace();
+            log.error("令牌过期");
+        }
+        return true;
+    }
+
 
 
     //其中key是密钥，一般保存在配置文件中

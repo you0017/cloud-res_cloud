@@ -62,8 +62,7 @@ public class FoodController {
     }
 
     @GetMapping("findAll")
-    public JsonModel findAll(@RequestHeader("token") String token){
-        log.info("token:{}",token);
+    public JsonModel findAll(){
         JsonModel jm = new JsonModel();
         List<Resfood> list = null;
         try {

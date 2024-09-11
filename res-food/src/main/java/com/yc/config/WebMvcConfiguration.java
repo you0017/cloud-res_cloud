@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * 配置类，注册web层相关组件
  */
-@Configuration
+//@Configuration
 @Slf4j
 //适用于需要对Spring MVC进行部分自定义配置的场景，官方推荐使用这种方式，因为它简单且不会覆盖Spring MVC的默认配置。
 //WebMvcConfigurationSupport类会覆盖默认配置
