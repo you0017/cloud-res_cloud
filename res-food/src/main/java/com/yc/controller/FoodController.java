@@ -6,6 +6,7 @@ import com.yc.bean.JsonModel;
 import com.yc.bean.PageBean;
 import com.yc.bean.Resfood;
 import com.yc.bean.ResfoodVO;
+import com.yc.context.BaseContext;
 import com.yc.service.FoodService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -13,12 +14,14 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apiguardian.api.API;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
@@ -39,6 +42,36 @@ public class FoodController {
 
     @Value("${res.food}")
     private String date;
+
+    @Autowired
+    private RedisTemplate<Object,Object> redisTemplate;
+
+    @GetMapping("/clickPraise/{fid}")
+    public Map<String,Object> clickPraise(@PathVariable("fid") Integer fid){
+        Map<String,Object> map = new HashMap<>();
+
+        String userId = BaseContext.getCurrentId();
+
+        //在redis中使用的是  String -> Set
+        if (redisTemplate.opsForSet().isMember("user_prise_fid:"+userId,fid)){
+            //已经点赞过了
+            map.put("code",0);
+            map.put("msg","已经点赞过了");
+            map.put("obj",redisTemplate.opsForValue().get("praise:"+fid));
+            return map;
+        }
+        //累计一个商品的点赞数
+        long praise = redisTemplate.opsForValue().increment("praise:"+fid);
+        //记录某个用户点赞过的商品编号
+        redisTemplate.opsForSet().add("user_prise_fid:"+userId,fid);
+        //记录商品被那些用户点赞
+        redisTemplate.opsForSet().add("fid_prise_user:"+fid,userId);
+
+        map.put("code",1);
+        map.put("msg","点赞成功");
+        map.put("obj",praise);
+        return map;
+    }
 
     //路径参数
     @GetMapping("/findById/{fid}")

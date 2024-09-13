@@ -18,12 +18,12 @@ public class RedisConfiguration {
         RedisTemplate redisTemplate = new RedisTemplate();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
 
-        /*//key-value序列化方式
+        //key-value序列化方式
         redisTemplate.setKeySerializer(new StringRedisSerializer());//配置键序列化方式
         redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());//值序列化方式
         //key-value序列化方式
         redisTemplate.setHashKeySerializer(new StringRedisSerializer());
-        redisTemplate.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());*/
+        redisTemplate.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
         return redisTemplate;
     }
 }

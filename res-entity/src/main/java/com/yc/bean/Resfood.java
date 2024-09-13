@@ -1,6 +1,7 @@
 package com.yc.bean;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,4 +31,7 @@ public class Resfood implements Serializable {
     //查看详情数，redis提供
     @TableField(exist = false)
     private Long detailCount;
+
+    @TableField(exist = false)
+    private Integer praise;
 }

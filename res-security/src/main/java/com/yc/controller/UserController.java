@@ -54,10 +54,10 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseResult login(@RequestBody @Valid ResUserVO resUserVO, HttpSession session){
-        String captcha = (String) session.getAttribute("captcha");
+        /*String captcha = (String) session.getAttribute("captcha");
         if(captcha == null || !captcha.equalsIgnoreCase(resUserVO.getCaptcha())){
             return ResponseResult.error("验证码错误");
-        }
+        }*/
 
         //调用service的loadUserByUsername获取UserDetails
         Authentication authentication = authenticationManager.authenticate(
@@ -84,6 +84,13 @@ public class UserController {
         return ResponseResult.ok("退出成功");
     }
 
+    @PostMapping("/check")
+    public ResponseResult check(@RequestHeader("token") String token){
+        if (jwtTokenUtil.decodeJWTWithKey(token)==null){
+            return ResponseResult.error("token已过期");
+        }
+        return ResponseResult.ok("校验通过");
+    }
 
     @PostMapping("/checkLogin")
     public ResponseResult checkLogin(){

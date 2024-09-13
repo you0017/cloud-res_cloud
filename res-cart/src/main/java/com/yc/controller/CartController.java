@@ -7,6 +7,7 @@ import com.yc.context.BaseContext;
 import com.yc.model.CartItem;
 import com.yc.model.ResponseResult;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -99,7 +100,7 @@ public class CartController {
      * (3)返回成功标志
      */
     @PutMapping("/addCart")
-    public ResponseResult addCart(@RequestParam Integer fid){
+    public ResponseResult addCart(@RequestParam Integer fid,Integer num){
         String userid = BaseContext.getCurrentId();
 
         Resfood food = getFoodInfo(fid);
@@ -112,7 +113,7 @@ public class CartController {
         CartItem ci;
         if (cart.containsKey(fid+"")){
             ci = (CartItem) cart.get(fid+"");
-            ci.setNum(ci.getNum()+1);
+            ci.setNum(ci.getNum()+num);
             ci.getSmallCount();
         } else {
             ci = new CartItem();
@@ -122,7 +123,7 @@ public class CartController {
             cart.put(fid+"",ci);
         }
         if (ci.getNum()<=0){
-            cart.remove(fid);
+            cart.remove(fid+"");
         }
         this.redisTemplate.opsForValue().set("cart:"+userid,cart);
         return ResponseResult.ok("添加购物车成功").setDate(cart);

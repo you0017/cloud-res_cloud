@@ -39,4 +39,6 @@ spring:
           - { data-id: res-knife4j.yaml,refresh: true } #knife4j
           - { data-id: res-jmx.yaml,refresh: true } #jmx
           - { data-id: res-log.yaml,refresh: true }
+          - {data-id: sentinel.yaml,refresh: true}
+          - {data-id: micrometer.yaml,refresh: true}
         server-addr: 127.0.0.1:8848

@@ -14,7 +14,7 @@ public class RedisConfiguration {
 
     @Bean
     public RedisTemplate redisTemplate(RedisConnectionFactory redisConnectionFactory){
-        /*log.info("开始创建redis模板对象");
+        log.info("开始创建redis模板对象");
         RedisTemplate redisTemplate = new RedisTemplate();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
 
@@ -24,13 +24,6 @@ public class RedisConfiguration {
         //key-value序列化方式
         redisTemplate.setHashKeySerializer(new StringRedisSerializer());
         redisTemplate.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
-        return redisTemplate;*/
-        log.info("开始创建redis模板对象");
-        RedisTemplate redisTemplate = new RedisTemplate();
-        //设置redis连接工厂对象
-        redisTemplate.setConnectionFactory(redisConnectionFactory);
-        //设置reids key的序列化器
-        //redisTemplate.setKeySerializer(new StringRedisSerializer());
         return redisTemplate;
     }
 }
