@@ -81,7 +81,8 @@ public class FoodController {
 
     //路径参数
     @GetMapping("/findById/{fid}")
-    public Map<String, Object> findById(@PathVariable Integer fid){
+    public Map<String, Object> findById(@PathVariable Integer fid) {
+        //Thread.sleep(200);
         DateFormat df = new SimpleDateFormat(date);
         log.info("当前时间：{}",df.format(System.currentTimeMillis()));
 
@@ -101,7 +102,7 @@ public class FoodController {
     }
 
     @GetMapping("findAll")
-    public JsonModel findAll(){
+    public JsonModel findAll() throws InterruptedException {
         JsonModel jm = new JsonModel();
         List<Resfood> list = null;
         try {

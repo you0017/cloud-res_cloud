@@ -47,45 +47,45 @@
     <!--锁定项目版本 -->
     <dependencyManagement>
         <dependencies>
-            <!--链路追踪-->
             <!--micrometer-tracing-bom导入链路追踪版本中心  1-->
-            <!--<dependency>
+            <dependency>
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-tracing-bom</artifactId>
                 <version>${micrometer-tracing.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            &lt;!&ndash;micrometer-tracing指标追踪  2&ndash;&gt;
+            <!--micrometer-tracing指标追踪  2-->
             <dependency>
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-tracing</artifactId>
                 <version>${micrometer-tracing.version}</version>
             </dependency>
-            &lt;!&ndash;micrometer-tracing-bridge-brave适配zipkin的桥接包 3&ndash;&gt;
+            <!--micrometer-tracing-bridge-brave适配zipkin的桥接包 3-->
             <dependency>
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-tracing-bridge-brave</artifactId>
                 <version>${micrometer-tracing.version}</version>
             </dependency>
-            &lt;!&ndash;micrometer-observation 4&ndash;&gt;
+            <!--micrometer-observation 4-->
             <dependency>
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-observation</artifactId>
                 <version>${micrometer-observation.version}</version>
             </dependency>
-            &lt;!&ndash;feign-micrometer 5&ndash;&gt;
+            <!--feign-micrometer 5-->
             <dependency>
                 <groupId>io.github.openfeign</groupId>
                 <artifactId>feign-micrometer</artifactId>
                 <version>${feign-micrometer.version}</version>
             </dependency>
-            &lt;!&ndash;zipkin-reporter-brave 6&ndash;&gt;
+            <!--zipkin-reporter-brave 6-->
             <dependency>
                 <groupId>io.zipkin.reporter2</groupId>
                 <artifactId>zipkin-reporter-brave</artifactId>
                 <version>${zipkin-reporter-brave.version}</version>
-            </dependency>-->
+            </dependency>
+
 
 
 
