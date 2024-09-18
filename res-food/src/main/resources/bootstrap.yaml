@@ -22,11 +22,13 @@ spring:
         group: DEFAULT_GROUP
         username: nacos
         password: nacos
-        prefix: res-food
-        file-extension: yaml
+#        prefix: res-food
+#        file-extension: yaml
         shared-configs: #共享配置
           - dataId: res-mysql.yaml #数据库
             group: DEFAULT_GROUP
+            refresh: true
+          - dataId: res-food.yaml
             refresh: true
           - { dataId: sentinel.yaml,refresh: true } #哨兵
           - { data-id: res-mybatisPlus.yaml,refresh: true } #mp
