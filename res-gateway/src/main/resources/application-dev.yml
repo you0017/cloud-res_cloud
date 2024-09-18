@@ -14,7 +14,7 @@ spring:
           uri: lb://res-food #路由微服务目标，lb代表负载均衡
           predicates:  #路由断言，判断是否符合规则，符合则路由到目标
             - Path=/resFood/**  #以请求路径做判断，以/resfood开头则符合
-            - ServiceTimeBetween=08:00,22:00
+          #  - ServiceTimeBetween=08:00,22:00
 #          filters:
 #            - TokenFilterFactory
             #- PrintAny=1,2,3 #要与类名一致

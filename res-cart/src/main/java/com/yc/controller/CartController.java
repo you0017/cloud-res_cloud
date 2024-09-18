@@ -84,10 +84,10 @@ public class CartController {
         //方案一:直接使用服务ip:端口  方式固定一个
         //Map<String,Object> result = this.restTemplate.getForObject("http://localhost:8080/resFood/findById/"+fid,Map.class);
         //方案二:利用@LoadBalanced注解(要加入负载均衡依赖)开启客户端使用服务名
-/*        String url = "http://res-food/resFood/findById/"+fid;
-        Map<String,Object> result = this.restTemplate.getForObject(url,Map.class);*/
+        String url = "http://res-food/resFood/findById/"+fid;
+        Map<String,Object> result = this.restTemplate.getForObject(url,Map.class);
 
-        Map<String, Object> result = resFoodApi.findById(fid);
+        //Map<String, Object> result = resFoodApi.findById(fid);
         ObjectMapper objectMapper = new ObjectMapper();
         Resfood food = objectMapper.convertValue(result.get("obj"), Resfood.class);
         return food;

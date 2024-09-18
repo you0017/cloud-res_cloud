@@ -46,6 +46,12 @@ public class FoodController {
     @Autowired
     private RedisTemplate<Object,Object> redisTemplate;
 
+    @GetMapping("/a")
+    public String a(@RequestParam String a){
+        System.out.println(a);
+        return "hello world";
+    }
+
     @GetMapping("/clickPraise/{fid}")
     public Map<String,Object> clickPraise(@PathVariable("fid") Integer fid){
         Map<String,Object> map = new HashMap<>();
