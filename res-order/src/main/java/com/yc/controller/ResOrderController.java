@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/resOrder")
@@ -26,6 +25,9 @@ public class ResOrderController {
     private RedisTemplate redisTemplate;
     @Autowired
     private ResOrderService resOrderService;
+
+    @Autowired
+    private JmsMessageProducer jmsMessageProducer;
 
     @PostMapping("/confirmOrder")
     public ResponseResult confirmOrder(@RequestBody Resorder resorder){
@@ -55,6 +57,8 @@ public class ResOrderController {
         }catch (Exception e){
             return ResponseResult.error("下单失败");
         }
+
+        jmsMessageProducer.sendMessage(resorder);
         redisTemplate.delete("cart:"+userid);
         return ResponseResult.ok("下单成功");
     }

@@ -30,7 +30,7 @@ spring:
             refresh: true
           - dataId: res-food.yaml
             refresh: true
-          - { dataId: sentinel.yaml,refresh: true } #哨兵
+          - { dataId: sentinel-res-food.yaml,refresh: true } #哨兵
           - { data-id: res-mybatisPlus.yaml,refresh: true } #mp
           - { data-id: res-threadPool.yaml,refresh: true } #@Async
           - { data-id: res-redis.yaml,refresh: true } #redis

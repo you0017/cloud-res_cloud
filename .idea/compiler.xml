@@ -13,6 +13,7 @@
         <module name="res-order" />
         <module name="res-gateway" />
         <module name="res-food" />
+        <module name="res-jms" />
         <module name="res-cart" />
       </profile>
     </annotationProcessing>
@@ -29,6 +30,7 @@
       <module name="res-entity" options="" />
       <module name="res-food" options="-parameters" />
       <module name="res-gateway" options="-parameters" />
+      <module name="res-jms" options="-parameters" />
       <module name="res-order" options="-parameters" />
       <module name="res-security" options="-parameters" />
       <module name="res_cloud" options="" />

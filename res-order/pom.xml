@@ -18,6 +18,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.yc</groupId>
+            <artifactId>res-jms</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <!--jwt-->
         <dependency>

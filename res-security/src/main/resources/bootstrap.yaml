@@ -32,7 +32,7 @@ spring:
           - dataId: res-mysql.yaml #数据库
             group: DEFAULT_GROUP
             refresh: true
-          - { dataId: sentinel.yaml,refresh: true } #哨兵
+          - { dataId: sentinel-res-security.yaml,refresh: true } #哨兵
           - { data-id: res-mybatisPlus.yaml,refresh: true } #mp
           - { data-id: res-threadPool.yaml,refresh: true } #@Async
           - { data-id: res-redis.yaml,refresh: true } #redis
@@ -41,4 +41,5 @@ spring:
           - { data-id: res-log.yaml,refresh: true }
           - {data-id: sentinel.yaml,refresh: true}
           - {data-id: micrometer.yaml,refresh: true}
+          - {data-id: activemq.yaml,refresh: true}
         server-addr: 127.0.0.1:8848

@@ -1,6 +1,7 @@
 package com.yc.controller;
 
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yc.bean.JsonModel;
 import com.yc.bean.PageBean;
@@ -29,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/resFood")
@@ -81,6 +83,7 @@ public class FoodController {
 
     //路径参数
     @GetMapping("/findById/{fid}")
+    @SentinelResource("findAllaa")
     public Map<String, Object> findById(@PathVariable Integer fid) {
         //Thread.sleep(200);
         DateFormat df = new SimpleDateFormat(date);
@@ -103,6 +106,11 @@ public class FoodController {
 
     @GetMapping("findAll")
     public JsonModel findAll() throws InterruptedException {
+        //Thread.sleep(200);
+        /*Random r = new Random();
+        if (r.nextBoolean()){
+            throw new RuntimeException("测试异常");
+        }*/
         JsonModel jm = new JsonModel();
         List<Resfood> list = null;
         try {

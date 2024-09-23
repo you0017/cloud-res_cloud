@@ -1,6 +1,5 @@
-#spring:
-#  profiles:
-#    active: dev
 spring:
+  profiles:
+    active: dev
   cache:
     cacheName: res-food
